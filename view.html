@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户回答展示</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入 Font Awesome 图标库（可选） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVn0O6U1PvO6N1zOZ7yxHRiMV7eXSEh8ejC6mLzqVfFw9+U91YcKFMH5doJi+o+mwzM53J7lfIg3Bl6CiW0scw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* 可选的额外样式 */
+        .back-button {
+            margin-top: 20px;
+            padding: 0.5rem 1.5rem;
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: 500;
+            border-radius: 9999px;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            outline: none;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .back-button:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .back-button:focus {
+            box-shadow: 0 0 0 2px rgba(209, 213, 219, 0.5);
+        }
+        
+        .back-button:active {
+            background-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="pageTitle">用户回答展示</h1>
+        <div id="categoriesContainer"></div>
+        
+        <!-- 复制链接按钮 -->
+        <button onclick="copyLink()" class="apple-style-button">复制链接</button>
+        
+        <!-- 制作我的按钮 -->
+        <button onclick="goHome()" class="apple-style-button">制作我的</button>
+    </div>
+
+    <script>
+        // 获取URL参数中的 uniqueCode
+        const urlParams = new URLSearchParams(window.location.search);
+        const uniqueCode = urlParams.get('code');
+
+        if (!uniqueCode) {
+            alert('无效的访问链接。');
+            window.location.href = 'index.html';
+        }
+
+        // 构建JSON数据的URL
+        const dataUrl = `users/${uniqueCode}/data.json`;
+
+        // 获取容器元素和标题元素
+        const categoriesContainer = document.getElementById("categoriesContainer");
+        const pageTitle = document.getElementById("pageTitle");
+
+        // 异步加载JSON数据
+        fetch(dataUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('数据加载失败');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const organizedAnswers = {};
+
+                data.answers.forEach(item => {
+                    if (!organizedAnswers[item.category]) {
+                        organizedAnswers[item.category] = [];
+                    }
+                    organizedAnswers[item.category].push({ question: item.question, answer: item.answer });
+                });
+
+                // 设置页面标题和 h1
+                const nickname = data.nickname || '用户';
+                const questionCount = data.answers.length || 0;
+                pageTitle.textContent = `关于${nickname}的${questionCount}个问题`;
+                document.title = `关于${nickname}的${questionCount}个问题`;
+
+                // 创建分类和问题元素
+                for (const [category, qaList] of Object.entries(organizedAnswers)) {
+                    const categoryElement = document.createElement("div");
+                    categoryElement.className = "category";
+                    
+                    const categoryTitle = document.createElement("h2");
+                    categoryTitle.className = "category-title";
+                    categoryTitle.textContent = category;
+                    categoryElement.appendChild(categoryTitle);
+
+                    const questionContainer = document.createElement("div");
+                    questionContainer.className = "question-container";
+
+                    qaList.forEach(q => {
+                        const questionElement = document.createElement("div");
+                        questionElement.className = "question";
+
+                        const questionTitle = document.createElement("div");
+                        questionTitle.className = "question-title";
+                        questionTitle.textContent = q.question;
+                        questionElement.appendChild(questionTitle);
+
+                        const answer = document.createElement("div");
+                        answer.className = "answer";
+                        // 将换行符转换为 <br> 标签以正确显示多行回答
+                        answer.innerHTML = q.answer.replace(/\n/g, "<br>");
+                        questionElement.appendChild(answer);
+
+                        questionContainer.appendChild(questionElement);
+                    });
+
+                    categoryElement.appendChild(questionContainer);
+                    categoriesContainer.appendChild(categoryElement);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert('无法加载用户数据。');
+                window.location.href = 'index.html';
+            });
+
+        // 复制链接功能
+        function copyLink() {
+            const el = document.createElement("textarea");
+            el.value = window.location.href;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand("copy");
+            document.body.removeChild(el);
+            alert("链接已复制到剪贴板！");
+        }
+
+        // 制作我的按钮功能
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

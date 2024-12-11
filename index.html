@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于你的100个问题</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入 Font Awesome 图标库（可选） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVn0O6U1PvO6N1zOZ7yxHRiMV7eXSEh8ejC6mLzqVfFw9+U91YcKFMH5doJi+o+mwzM53J7lfIg3Bl6CiW0scw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h1>关于你的100个问题</h1>
+        <div id="categoriesContainer"></div>
+
+        <!-- 问题回答模态框 -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalQuestion"></h2>
+                <textarea id="modalAnswerInput" class="modal-input" rows="4"></textarea>
+                <button id="saveAnswerBtn" class="apple-style-button">保存</button>
+            </div>
+        </div>
+
+        <!-- 昵称输入模态框 -->
+        <div id="nicknameModal" class="modal">
+            <div class="modal-content nickname-modal-content">
+                <span class="close">&times;</span>
+                <h2>请输入您的昵称</h2>
+                <input type="text" id="nicknameInput" placeholder="昵称" aria-label="昵称输入框">
+                <button id="submitNicknameBtn" class="apple-style-button">生成</button>
+            </div>
+        </div>
+
+        <!-- 加载动画 -->
+        <div id="loading">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- 生成按钮 -->
+    <button id="generateBtn" class="apple-style-button">生成</button>
+
+    <script src="questions.js"></script>
+    <script>
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        const modal = document.getElementById('modal');
+        const modalQuestion = document.getElementById('modalQuestion');
+        const modalAnswerInput = document.getElementById('modalAnswerInput');
+        const closeBtns = document.getElementsByClassName('close');
+        const saveAnswerBtn = document.getElementById('saveAnswerBtn');
+
+        const nicknameModal = document.getElementById('nicknameModal');
+        const submitNicknameBtn = document.getElementById('submitNicknameBtn');
+        const nicknameInput = document.getElementById('nicknameInput');
+
+        const generateBtn = document.getElementById('generateBtn');
+
+        const loading = document.getElementById('loading');
+
+        let currentCategory = null;
+        let currentQuestion = null;
+        let userAnswers = {};
+
+        // 初始化问题列表
+        function initializeQuestions() {
+            let questionNumber = 1;
+            for (const [category, questions] of Object.entries(categories)) {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category';
+                
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.className = 'category-title';
+                categoryTitle.textContent = category;
+                categoryElement.appendChild(categoryTitle);
+
+                const questionContainer = document.createElement('div');
+                questionContainer.className = 'question-container';
+
+                questions.forEach((q, index) => {
+                    const questionElement = document.createElement('div');
+                    questionElement.className = 'question';
+                    questionElement.textContent = `${questionNumber++}. ${q.question}`;
+                    questionElement.onclick = () => showModal(category, q.question);
+                    
+                    // 检查是否已回答
+                    if (userAnswers[category] && userAnswers[category][q.question]) {
+                        questionElement.style.backgroundColor = '#d4edda'; // 已回答颜色
+                        questionElement.style.borderColor = '#c3e6cb';
+                    }
+
+                    questionContainer.appendChild(questionElement);
+                });
+
+                categoryElement.appendChild(questionContainer);
+                categoriesContainer.appendChild(categoryElement);
+            }
+        }
+
+        // 显示回答模态框
+        function showModal(category, question) {
+            modalQuestion.textContent = question;
+            modalAnswerInput.value = (userAnswers[category] && userAnswers[category][question]) || "";
+            modal.classList.add('active'); // 添加 active 类以显示模态框
+            currentCategory = category;
+            currentQuestion = question;
+        }
+
+        // 隐藏模态框
+        function hideModal() {
+            modal.classList.remove('active');
+            nicknameModal.classList.remove('active');
+        }
+
+        // 保存回答
+        saveAnswerBtn.onclick = () => {
+            const answer = modalAnswerInput.value.trim();
+            if (currentCategory && currentQuestion) {
+                if (!userAnswers[currentCategory]) {
+                    userAnswers[currentCategory] = {};
+                }
+                userAnswers[currentCategory][currentQuestion] = answer;
+            }
+            hideModal();
+            // 更新已回答的问题样式
+            updateAnsweredQuestions();
+        }
+
+        // 更新已回答的问题样式
+        function updateAnsweredQuestions() {
+            // 重新加载问题列表以更新样式
+            categoriesContainer.innerHTML = '';
+            initializeQuestions();
+        }
+
+        // 关闭模态框
+        for (let btn of closeBtns) {
+            btn.onclick = () => {
+                hideModal();
+            }
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                hideModal();
+            }
+            if (event.target == nicknameModal) {
+                hideModal();
+            }
+        }
+
+        // 生成按钮点击事件
+        generateBtn.onclick = () => {
+            nicknameModal.classList.add('active'); // 添加 active 类以显示昵称模态框
+        }
+
+        // 提交昵称并生成页面
+        submitNicknameBtn.onclick = () => {
+            const nickname = nicknameInput.value.trim();
+            if (!nickname) {
+                alert("请输入昵称！");
+                return;
+            }
+
+            // 检查是否有回答
+            let answeredCount = 0;
+            for (const category in userAnswers) {
+                answeredCount += Object.keys(userAnswers[category]).length;
+            }
+            if (answeredCount === 0) {
+                alert("请先回答至少一个问题！");
+                return;
+            }
+
+            // 显示加载动画
+            loading.style.display = 'flex';
+
+            // 发送数据到服务器
+            fetch('submit.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nickname: nickname,
+                    answers: userAnswers
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 隐藏加载动画
+                loading.style.display = 'none';
+                if (data.success) {
+                    // 重定向到 view.html 并传递 uniqueCode
+                    window.location.href = `/view.html?code=${data.uniqueCode}`;
+                } else {
+                    alert(`生成失败，请重试。原因：${data.message}`);
+                }
+            })
+            .catch((error) => {
+                // 隐藏加载动画
+                loading.style.display = 'none';
+                console.error('Error:', error);
+                alert("发生错误，请重试。");
+            });
+        }
+
+        // 初始化页面
+        initializeQuestions();
+    </script>
+</body>
+</html>

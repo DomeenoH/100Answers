@@ -1,0 +1,282 @@
+/* styles.css */
+
+/* 基础样式 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0; /* 移除 body 内边距 */
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px; /* 设置最大宽度，根据需要调整 */
+    margin: 0 auto; /* 自动左右边距，实现居中 */
+    padding: 20px 40px; /* 内部填充，上下20px，左右40px */
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.category {
+    margin-bottom: 30px;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.question-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.question {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: calc(33.33% - 10px);
+    box-sizing: border-box;
+}
+
+.question:hover {
+    background-color: #e9e9e9;
+}
+
+.question-title {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.answer {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+/* Apple 风格的按钮样式 */
+.apple-style-button {
+    background-color: #ffffff; /* 白色背景 */
+    color: #000000; /* 黑色文字 */
+    font-weight: 500; /* 中等字体重量 */
+    padding: 0.5rem 1.5rem; /* 上下内边距0.5rem，左右内边距1.5rem */
+    border-radius: 9999px; /* 完全圆角 */
+    border: 1px solid #d1d5db; /* 灰色边框 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* 轻微阴影 */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
+    cursor: pointer;
+    outline: none;
+    font-size: 16px; /* 统一字体大小 */
+    font-family: Arial, sans-serif; /* 统一字体 */
+}
+
+.apple-style-button:hover {
+    background-color: #f3f4f6; /* 浅灰色背景 */
+}
+
+.apple-style-button:focus {
+    box-shadow: 0 0 0 2px rgba(209, 213, 219, 0.5); /* 灰色环绕阴影 */
+}
+
+.apple-style-button:active {
+    background-color: #e5e7eb; /* 更深的浅灰色背景 */
+}
+
+/* 新增：针对 #generateBtn 的样式 */
+#generateBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db; /* 蓝色背景，使其更醒目 */
+    color: #ffffff; /* 白色文字 */
+    padding: 0.75rem 2rem; /* 增加内边距，按钮更大 */
+    font-size: 18px; /* 增大字体大小 */
+    border: none; /* 移除默认边框 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 增加阴影，提升立体感 */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 添加动画效果 */
+    cursor: pointer;
+    outline: none;
+    border-radius: 9999px; /* 保持圆角 */
+    z-index: 1000; /* 确保按钮在最上层 */
+}
+
+#generateBtn:hover {
+    background-color: #2980b9; /* 深蓝色背景 */
+    transform: scale(1.05); /* 悬停时放大5% */
+}
+
+#generateBtn:focus {
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); /* 更明显的聚焦阴影 */
+}
+
+#generateBtn:active {
+    background-color: #1c5980; /* 更深的蓝色背景 */
+    transform: translateY(2px) scale(1); /* 点击时按钮下沉并恢复原大小 */
+}
+
+/* 模态框样式 */
+.modal {
+    display: none; /* 初始隐藏 */
+    position: fixed;
+    z-index: 999; /* 确保模态框在按钮下方 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    padding-top: 50px; /* 上方留出空间，偏上 */
+}
+
+/* 当模态框激活时显示 */
+.modal.active {
+    display: flex;
+    align-items: flex-start; /* 从顶部开始 */
+}
+
+/* 模态框内容 */
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 关闭按钮样式 */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 昵称输入模态框样式 */
+.nickname-modal-content {
+    /* 可以添加额外的样式，如果需要 */
+}
+
+/* 昵称输入框样式 */
+.nickname-modal-content input {
+    width: 100%;
+    padding: 12px 20px; /* 增加内边距，提升舒适度 */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* 轻微灰色边框 */
+    border-radius: 8px; /* 圆角边框 */
+    box-sizing: border-box; /* 包含内边距和边框在内 */
+    background-color: #f9f9f9; /* 浅灰背景 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 内部阴影，增加深度 */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
+    font-size: 16px; /* 提升字体大小 */
+    font-family: Arial, sans-serif; /* 确保字体一致 */
+}
+
+.nickname-modal-content input:focus {
+    border-color: #3498db; /* 蓝色边框 */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* 外部阴影，突出显示 */
+    outline: none; /* 移除默认轮廓 */
+}
+
+/* 回答输入框样式 */
+.modal-content textarea.modal-input {
+    width: 100%;
+    padding: 12px 20px; /* 增加内边距，提升舒适度 */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* 轻微灰色边框 */
+    border-radius: 8px; /* 圆角边框 */
+    box-sizing: border-box; /* 包含内边距和边框在内 */
+    background-color: #f9f9f9; /* 浅灰背景 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 内部阴影，增加深度 */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
+    font-size: 16px; /* 提升字体大小 */
+    font-family: Arial, sans-serif; /* 确保字体一致 */
+}
+
+.modal-content textarea.modal-input:focus {
+    border-color: #3498db; /* 蓝色边框 */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* 外部阴影，突出显示 */
+    outline: none; /* 移除默认轮廓 */
+}
+
+/* 加载动画样式 */
+#loading {
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1000px; /* 根据需要调整 */
+    }
+}
+
+@media (max-width: 768px) {
+    .question {
+        width: calc(50% - 10px);
+    }
+
+    .modal-content {
+        max-width: 500px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .question {
+        width: 100%;
+    }
+
+    .modal-content {
+        max-width: 400px;
+        width: 80%;
+    }
+}

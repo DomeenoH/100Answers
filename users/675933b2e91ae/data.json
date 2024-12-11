@@ -1,0 +1,256 @@
+{
+    "nickname": "多米诺",
+    "answers": [
+      {
+        "category": "个人信息",
+        "question": "身高",
+        "answer": "173cm"
+      },
+      {
+        "category": "个人信息",
+        "question": "年级",
+        "answer": "当了好几年社畜了"
+      },
+      {
+        "category": "个人信息",
+        "question": "血型",
+        "answer": "AB"
+      },
+      {
+        "category": "个人信息",
+        "question": "生日",
+        "answer": "1999年6月29日"
+      },
+      {
+        "category": "个人信息",
+        "question": "长发/短发?",
+        "answer": "长发"
+      },
+      {
+        "category": "个人信息",
+        "question": "住在哪个城市",
+        "answer": "目前在沈阳，计划2025或2026年搬家"
+      },
+      {
+        "category": "个人信息",
+        "question": "一次元/二次元/三次元?",
+        "answer": "三次元，我老三次元了"
+      },
+      {
+        "category": "个人信息",
+        "question": "有没有兄弟姐妹?",
+        "answer": "独生子"
+      },
+      {
+        "category": "个人信息",
+        "question": "你的星座是什么?",
+        "answer": "巨蟹座"
+      },
+      {
+        "category": "个人信息",
+        "question": "是否养宠物?",
+        "answer": "有一只猫叫呆比"
+      },
+      {
+        "category": "生活习惯",
+        "question": "一般几点睡几点起?",
+        "answer": "24点后，25点前"
+      },
+      {
+        "category": "生活习惯",
+        "question": "怕热/怕冷?",
+        "answer": "怕热，但怀疑只是容易流虚汗"
+      },
+      {
+        "category": "生活习惯",
+        "question": "MBTI",
+        "answer": "ISTJ"
+      },
+      {
+        "category": "生活习惯",
+        "question": "早上和晚上更喜欢哪个时段?",
+        "answer": "谈不上特别喜欢，但更偏爱15点前后"
+      },
+      {
+        "category": "生活习惯",
+        "question": "给哪个游戏氪的金最多",
+        "answer": "彩虹六号"
+      },
+      {
+        "category": "生活习惯",
+        "question": "有没有经历过灵异事件",
+        "answer": "没有，我超级唯物主义（）"
+      },
+      {
+        "category": "生活习惯",
+        "question": "日常最依赖的电子设备是什么?",
+        "answer": "手机"
+      },
+      {
+        "category": "生活习惯",
+        "question": "工作时更倾向于听音乐还是安静环境?",
+        "answer": "听音乐，我干啥都喜欢一边听音乐"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "说一个自己的特长/兴趣爱好",
+        "answer": "特长包括：擅长拍摄和后期处理全流程工作，熟练外语和技术管理（特别是CTO职责）；兴趣爱好是飙车，前提是马路上没有违章摄像头x"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最想获得什么超能力",
+        "answer": "时间停止"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "坚持了很久的习惯/爱好/没有倒的flag",
+        "answer": "暂时没有想到特别坚持的习惯"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "喜欢的颜色",
+        "answer": "最喜欢Apple的主题黑白色#333336和#fafafa"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "喜欢的食物",
+        "answer": "喜欢所有的肉，还有肠粉"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "喜欢的音乐风格",
+        "answer": "喜欢的音乐风格非常多变，可能会把凤凰传奇、AC/DC、巴赫混在一起听"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的运动",
+        "answer": "开车（这算运动吗？）"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最近最喜欢的一首歌/音乐",
+        "answer": "Baby，До свидания - 朴树"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的书籍/番剧/电影是什么?",
+        "answer": "小说《死在火星上》，电影《Love Actually》《Interstellar》"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "喜欢的奶茶配料",
+        "answer": "红豆"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "喜欢的月饼口味",
+        "answer": "咸蛋黄或者椰蓉"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的薯片口味",
+        "answer": "烧烤味，黄瓜味也挺喜欢"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢/最讨厌的水果",
+        "answer": "最喜欢榴莲/椰子/哈密瓜，讨厌柚子和西红柿"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的季节",
+        "answer": "秋天，干燥凉爽"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的动物",
+        "answer": "猫，一切猫，大大小小的猫"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的一句话/座右铭",
+        "answer": "Après moi, le déluge."
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的诗人",
+        "answer": "狄兰·托马斯，尤其是他的《Do not go gentle into that good night》"
+      },
+      {
+        "category": "兴趣爱好",
+        "question": "最喜欢的一天之中的什么时候",
+        "answer": "twilight"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "最害怕的事物是什么?",
+        "answer": "浪费时间或无法实现自我价值，以及怕黑"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "最近一次emo的原因",
+        "answer": "工作中遇到的挑战或对未来规划的迷茫"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "讨厌什么样的人",
+        "answer": "讨厌不思考而显得冒犯和愚蠢的人"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "说说讨厌的事物",
+        "answer": "讨厌事态偏离我的预期、脱离我的控制"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "你最看重朋友的哪些特质?",
+        "answer": "对我的态度和价值"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "人生中最遗憾的一件事是什么?",
+        "answer": "没有一个富裕的家庭"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "如果明天就是世界末日你今天会做什么?",
+        "answer": "热武器打人肉靶"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "是否相信来生/天堂/灵魂?",
+        "answer": "不相信，我是个很极端的唯物主义者"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "谈谈对金钱和成功的看法",
+        "answer": "金钱是成功的必要前提和最有说服力的结果体现"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "会因为什么和一个人做朋友",
+        "answer": "第一印象的好感"
+      },
+      {
+        "category": "情感与价值观",
+        "question": "说说自己的xp",
+        "answer": "不说"
+      },
+      {
+        "category": "推荐与分享",
+        "question": "推荐一个冷门但好用的APP",
+        "answer": "https://app.follow.is/"
+      },
+      {
+        "category": "推荐与分享",
+        "question": "推荐一个up主/微博大v",
+        "answer": "影视飓风"
+      },
+      {
+        "category": "推荐与分享",
+        "question": "推荐一款零食",
+        "answer": "蛋挞"
+      }
+    ]
+  }
+  
